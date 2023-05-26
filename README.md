@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## See this App live
+
+Go to https://Marioacj98.github.io/recipe-app to see this App live with GitHub Pages (https://github.com/gitname/react-gh-pages).
+
 ## Available Scripts
 
 In the project directory, you can run:

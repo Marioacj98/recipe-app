@@ -6,3 +6,30 @@ body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
 }
+
+/*Custom styles for Splide*/
+.splide__pagination__page.is-active {
+  background: #F97316 !important;
+  opacity: 1 !important;
+}
+
+.splide__arrow--prev {
+  left: 0 !important;
+}
+
+.splide__arrow--next {
+  right: 0 !important;
+}
+
+.splide__arrow {
+  background: #F97316 !important;
+  opacity: 1 !important;
+}
+
+.splide__arrow svg {
+  fill: #fff !important;
+}
+
+.splide {
+  max-width: 100%;
+}

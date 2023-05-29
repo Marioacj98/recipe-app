@@ -7,7 +7,7 @@ export default function Pages() {
   return (
     <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/recipe-app/' element={<Home />} />
             <Route path='/search/:search' element={<Home />} />
             <Route path='/recipe/:name' element={<SingleRecipe />} />
         </Routes>

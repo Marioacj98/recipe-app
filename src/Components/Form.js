@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Recipe from './Recipe';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Form () {
     // State to render the Recipe.js component with the data recieved from the API
@@ -24,10 +25,14 @@ export default function Form () {
         setSearch(e.target.value);
     }
 
+    // Set navigation to searched value
+    const navigate = useNavigate();
+
     // Prevent the reload of the page, set the query that the user wants to search and clear the search field value
     const getSearch = e => {
         e.preventDefault();
         setQuery(search);
+        navigate('/search/'+search);
         setSearch('');
     };
 
@@ -50,15 +55,14 @@ export default function Form () {
             <div className='flex flex-wrap flex-row justify-center relative max-w-full'>
                 <Splide className='py-8 px-9' options={{perPage: 4, breakpoints: { 1024: { perPage: 2 }, 768: { perPage: 1 } }, gap: '20px', rewind: true}}>
                     {/* Map to render the list of recipes */}
-                    {recipes.map(recipe => (
-                        <SplideSlide key={recipe.recipe.label}>
+                    {recipes.map((recipe, index) => (
+                        <SplideSlide key={index}>
                             <Recipe
-                                key={recipe.recipe.label}
+                                key={index}
                                 title={recipe.recipe.label}
                                 calories={parseInt(recipe.recipe.calories)}
                                 diet={recipe.recipe.dietLabels}
                                 image={recipe.recipe.image}
-                                ingredients={recipe.recipe.ingredients}
                             />
                         </SplideSlide>
                     ))}

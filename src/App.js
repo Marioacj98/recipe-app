@@ -1,12 +1,10 @@
 import React from 'react';
-import Header from './Components/Header';
-import Form from './Components/Form';
+import Pages from './Pages/Pages';
 
 export default function App() {
   return (
     <div className='container mx-auto p-4'>
-      <Header />
-      <Form />
+      <Pages />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Recipe from './Recipe';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useNavigate } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function Form () {
     // State to render the Recipe.js component with the data recieved from the API
@@ -41,6 +42,17 @@ export default function Form () {
         getRecipes();
     }, [getRecipes]);
 
+    // Show Skeleton while fetching the API
+    const [showRecipe, setShowRecipe] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+        setShowRecipe(true);
+        }, 3500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className='flex flex-col justify-center py-6'>
             {/* Form with the search field */}
@@ -57,6 +69,7 @@ export default function Form () {
                     {/* Map to render the list of recipes */}
                     {recipes.map((recipe, index) => (
                         <SplideSlide key={index}>
+                            {showRecipe ? (
                             <Recipe
                                 key={index}
                                 title={recipe.recipe.label}
@@ -64,6 +77,14 @@ export default function Form () {
                                 diet={recipe.recipe.dietLabels}
                                 image={recipe.recipe.image}
                             />
+                            ) : (
+                            <div className='flex flex-col gap-2 items-center'>
+                                <Skeleton variant="rounded" className='w-full' height={275} />
+                                <Skeleton variant="rounded" width={150} />
+                                <Skeleton variant="rounded" width={60} />
+                                <Skeleton variant="rounded" width={120} />
+                            </div>
+                            )}
                         </SplideSlide>
                     ))}
                 </Splide>

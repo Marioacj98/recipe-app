@@ -16,7 +16,8 @@ export default function SingleRecipe () {
 
     useEffect(() => {
         getInfo();
-    });
+        // eslint-disable-next-line
+    }, [setInfo]);
 
     return (
         <>
